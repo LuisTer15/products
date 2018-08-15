@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @product.name %></h2>
+<h4><%= @product.price %></h4>
+<% if @product.categories.length > 0 %>
+  <% count = 0 %>
+  <% while @product.categories.length != count %>
+    <h4><%= @product.categories[count].name %></h4>
+    <% count = count + 1 %>
+  <% end %>
+<% else %>
+  <h4>No Categories Found</h4>
+<% end %>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
