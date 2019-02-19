@@ -13,13 +13,21 @@
 
   <div class="actions">
     <%= form_for product do |f| %>
-      <%= f.text_field :name, placeholder: "Ingresa el nombre del producto" %>
-      <%= f.number_field :price, placeholder: "Ingresa el precio del producto" %>
-      <%= @categories.each do |category| %>
-        <%= label_tag(category.name, "#{category.name}") %>
-        <%= check_box_tag(category.name) %>
+      <br>
+      <%= f.text_field :name, placeholder: "Ingresa el nombre del producto", class: "form-control" %>
+      <br>
+      <%= f.number_field :price, placeholder: "Ingresa el precio del producto", class: "form-control" %>
+      <br>
+      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+        <%= b.check_box %>
+        <%= b.label %>
       <% end %>
-      <%= form.submit %>
+
+      <!--<%= @categories.each do |category| %>
+        <%= check_box_tag(category.name, class: "form-check-input")  %>
+      <% end %>-->
+      <br>
+      <%= form.submit class: "btn btn-block btn-primary mt-3"%>
     <% end %>
   </div>
 <% end %>
